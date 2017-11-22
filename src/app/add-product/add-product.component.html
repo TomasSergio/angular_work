@@ -1,0 +1,40 @@
+<div class="add_product">
+  <h1 class="mat-display-1">Add product </h1>
+  <form #productForm="ngForm" (submit)="productForm.valid && add_product(productForm, name)" novalidate class='edit_form'>
+    <div class="title">
+      <mat-form-field class="product_name">
+        <input matInput placeholder="Product name" type="text"
+               name="name"
+               [(ngModel)]="model.name"
+               required>
+      </mat-form-field>
+      <mat-form-field class="price">
+        <input matInput placeholder="Price" type="number"
+               name="price"
+               [(ngModel)]="model.price"
+               required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="full_width">
+          <textarea  matInput matTextareaAutosize placeholder="Description" name="description"
+                     [(ngModel)]="model.description"
+          ></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <div class="add_product__image">
+        <label for="loadImage" class="mat-raised-button" ><mat-icon>photo</mat-icon>{{load_btn_text}}</label>
+        <input id='loadImage' type="file" name="image" (change)="load_image($event)" >
+        <div *ngIf="error_img" class="err">Not image.</div>
+      </div>
+      <div class="pre_view">
+        <img *ngIf="model.image" src={{model.image}} alt="">
+      </div>
+
+    </div>
+    <div class="wr_submit">
+      <button type="submit" mat-raised-button> Add product</button>
+    </div>
+  </form>
+</div>

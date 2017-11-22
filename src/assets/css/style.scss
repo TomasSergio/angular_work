@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+$size: 14;
+$max_width: 1440;
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'Roboto', sans-serif;
+  font-size: #{$size}px;
+}
+.cont{
+  max-width: #{$max_width}px;
+  margin: 0 auto;
+}
+
+.main{
+  padding: 20px;
+}
+
+.row{
+  margin: 0 -20px;
+}
+
+img{
+  max-width: 100%;
+}
+
+.full_width{
+  width: 100%;
+}

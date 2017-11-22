@@ -1,0 +1,53 @@
+<button (click)="go_back()" mat-button class="back_btn">
+  <mat-icon>keyboard_arrow_left</mat-icon> back
+</button>
+
+<div class="product">
+  <div class="product__image">
+    <div class="edit__image" *ngIf="state">
+      <label for="loadImage" class="mat-fab" ><mat-icon>mode_edit</mat-icon></label>
+      <input id='loadImage' type="file" name="image" (change)="load_image($event)" >
+      <div *ngIf="error_img" class="err">Not image.</div>
+    </div>
+    <img src='{{ model.image }}' alt="{{ model.name }}">
+  </div>
+  <div class="product__action">
+    <button mat-raised-button (click)="edit(productForm)" class="edit_btn" [class.save]="state" >{{ state ? 'Save' : 'Edit' }}</button>
+    <button mat-raised-button color="warn" (click)="delete_product()" *ngIf="state"> DELETE </button>
+  </div>
+  <div class="product__information" *ngIf="!state; else edit_product">
+    <h1>{{ model.name }}</h1>
+    <div class="product__price"> {{ model.price | currency:'USD':true }} </div>
+    <div class="product_description">
+      {{ model.description }}
+    </div>
+  </div>
+  <ng-template #edit_product>
+    <form #productForm="ngForm" novalidate class='edit_form'>
+      <div class="title">
+        <mat-form-field class="product_name">
+          <input matInput placeholder="Product name" type="text"
+                 name="name"
+                 [(ngModel)]="model.name"
+                 (keyup)="form_status(productForm.valid)"
+                 required>
+        </mat-form-field>
+        <mat-form-field class="price">
+          <input matInput placeholder="Price" type="number"
+                 name="price"
+                 [(ngModel)]="model.price"
+                 (keyup)="form_status(productForm.valid)"
+                 required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="full_width">
+          <textarea  matInput matTextareaAutosize placeholder="Description" name="description"
+                     [(ngModel)]="model.description"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </ng-template>
+
+</div>

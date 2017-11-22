@@ -1,0 +1,95 @@
+.product{
+  display: flex;
+  position: relative;
+  .edit__image{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    .err{
+      margin-left: 10px;
+      padding: 5px 10px;
+      background: rgba(255,255,255,.6);
+      color:red;
+    }
+    .mat-fab{
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      width: 50px;
+      height: 50px;
+    }
+    input[type=file]{
+      display: none;
+    }
+  }
+  &__image{
+    position: relative;
+    padding-right: 50px;
+    width: 100%;
+    max-width: 450px;
+  }
+  &__information{
+    h1{
+      font-size: 40px;
+      margin: 0 0 20px 0;
+      padding-right: 100px;
+    }
+  }
+  &__price{
+    font-size: 30px;
+    color: #673ab7;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .product__action{
+    position: absolute;
+    top: 0;
+    right: 0;
+    button{
+      display: block;
+      &:not(:last-child){
+        margin-bottom: 10px;
+      }
+    }
+    .save{
+      background: #61a071;
+      color: #fff;
+    }
+  }
+}
+
+.edit_form{
+  font-size: 18px;
+  max-width: 500px;
+  width: 100%;
+  .title{
+    display: flex;
+    .product_name{
+      width: 100%;
+    }
+    .price{
+      width: 80px;
+      margin-left: 20px;
+    }
+  }
+}
+.back_btn{
+  margin-bottom: 20px;
+  &:hover{
+    mat-icon{
+      left:-3px;
+    }
+  }
+  mat-icon{
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    position: relative;
+    left: 0;
+    vertical-align: -6px;
+  }
+}

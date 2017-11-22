@@ -1,0 +1,20 @@
+<div class="products row" *ngIf="products.length; else no_products">
+  <div class="products__item product" *ngFor="let product of products">
+    <div class="product__image">
+      <img [src]='product.image' alt="{{ product.name }}">
+    </div>
+    <a [routerLink]="['/product', product.id]" class="product__info">
+      <div class="product__name">
+        {{ product.name }}
+      </div>
+      <div class="product__price">
+        {{ product.price | currency:'USD':true }}
+      </div>
+    </a>
+  </div>
+</div>
+<ng-template #no_products>
+  <div class="no_products">
+    <h1 class="mat-headline"> No products. You can <a routerLink="/add_product">add</a> product or <span (click)="restart()">restart</span> application.</h1>
+  </div>
+</ng-template>
